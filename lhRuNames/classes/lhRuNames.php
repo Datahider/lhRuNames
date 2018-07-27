@@ -92,7 +92,7 @@ class lhRuNames extends lhAbstractRuNames {
         return ($this->names['unf']) ? $this->names['unf'] : [$this->full()];
     }
     public function unformalVocative($name=null) {
-        return ($this->names['unf-voc']) ? $this->names['unf-voc'] : [$this->unformal()];
+        return ($this->names['unf-voc']) ? $this->names['unf-voc'] : $this->unformal();
     }
     public function full($name=null) {
         return $this->names['full'];

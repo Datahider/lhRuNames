@@ -769,7 +769,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Марианна
         Марика
         Марина
-        Мария
+        Мария Маша !Маш _Машенька _Машуня _!Машунь #Maxa #!Мах
         Марселина
         Марта
         Маруся
