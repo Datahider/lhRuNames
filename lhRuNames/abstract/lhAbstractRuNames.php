@@ -638,7 +638,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Данута
         Дара
         Дарина
-        Дарья
+        Дарья Даша !Даш _Дашуня _Дашенька _!Дашунь
         Даяна
         Дебора
         Джамиля

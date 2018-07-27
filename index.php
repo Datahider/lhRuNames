@@ -10,7 +10,7 @@ define('LH_LIB_ROOT', './');
 
 require_once LH_LIB_ROOT . 'lhRuNames/classes/lhRuNames.php';
 
-$n = new lhRuNames('Маша');
+$n = new lhRuNames('Дарья');
 
 echo $n->full()."\n";
 var_dump($n->short());
