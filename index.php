@@ -6,3 +6,12 @@
  * and open the template in the editor.
  */
 
+define('LH_LIB_ROOT', './');
+
+require_once LH_LIB_ROOT . 'lhRuNames/classes/lhRuNames.php';
+
+$n = new lhRuNames('Петюша');
+
+echo $n->full()."\n";
+var_dump($n->short());
+var_dump($n->shortVocative());
