@@ -15,3 +15,4 @@ $n = new lhRuNames('Петюша');
 echo $n->full()."\n";
 var_dump($n->short());
 var_dump($n->shortVocative());
+var_dump($n->unformalVocative());

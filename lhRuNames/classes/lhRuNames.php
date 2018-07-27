@@ -77,22 +77,22 @@ class lhRuNames extends lhAbstractRuNames {
     }
     
     public function short($name=null) {
-        return $this->names['short'];
+        return ($this->names['short']) ? $this->names['short'] : [$this->full()];
     }
     public function shortVocative($name=null) {
-        return $this->names['voc'];
+        return ($this->names['voc']) ? $this->names['voc'] : $this->short();
     }
     public function dim($name=null) {
-        throw new Exception("Метод не определен");
+        return ($this->names['dim']) ? $this->names['dim'] : $this->short();
     }
     public function dimVocative($name=null) {
-        throw new Exception("Метод не определен");
+        return ($this->names['dim-voc']) ? $this->names['dim-voc'] : $this->dim();
     }
     public function unformal($name=null) {
-        throw new Exception("Метод не определен");
+        return ($this->names['unf']) ? $this->names['unf'] : [$this->full()];
     }
     public function unformalVocative($name=null) {
-        throw new Exception("Метод не определен");
+        return ($this->names['unf-voc']) ? $this->names['unf-voc'] : [$this->unformal()];
     }
     public function full($name=null) {
         return $this->names['full'];
