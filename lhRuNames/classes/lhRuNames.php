@@ -11,7 +11,7 @@
  *
  * @author user
  */
-require_once LH_LIB_ROOT . 'lhRuNames/abstract/lhAbstractRuNames.php';
+require_once __DIR__ . '/../abstract/lhAbstractRuNames.php';
 
 class lhRuNames extends lhAbstractRuNames {
     protected $found_names;

@@ -11,7 +11,7 @@
  *
  * @author user
  */
-require_once LH_LIB_ROOT . 'lhRuNames/interface/lhRuNamesInterface.php';
+require_once __DIR__ . '/../interface/lhRuNamesInterface.php';
 
 abstract class lhAbstractRuNames implements lhRuNamesInterface {
     
