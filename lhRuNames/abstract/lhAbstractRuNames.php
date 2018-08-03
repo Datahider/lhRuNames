@@ -25,6 +25,14 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         $this->setName($name);
     }
     
+    public function gender() {
+        return $this->gender;
+    }
+
+    public function is_known() {
+        return $this->known_name;
+    }
+
     protected function setName($name=null) {
         if (($this->name != $name) && ($name !== null)) {
             $this->name = $name;
