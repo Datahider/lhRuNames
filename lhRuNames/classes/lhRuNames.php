@@ -53,12 +53,12 @@ class lhRuNames extends lhAbstractRuNames {
         
         $names_array = [];
         
-        if (preg_match_all("/^((.*)[_#\s]$name(.*))$/ium", self::$mens_names, $matches)) {
+        if (preg_match_all("/^((.*)[_#\s]$name(.*))$/um", self::$mens_names, $matches)) {
             if (count($matches)) $this->gender = self::$gender_male;
             $names_array = array_merge($names_array, $matches[1]);
             $this->known_name = true;
         }
-        if (preg_match_all("/^((.*)[_#\s]$name(.*))$/ium", self::$womens_names, $matches)) {
+        if (preg_match_all("/^((.*)[_#\s]$name(.*))$/um", self::$womens_names, $matches)) {
             if (count($matches)) $this->gender = $this->gender ? null : self::$gender_female;
             $names_array = array_merge($names_array, $matches[1]);
             $this->known_name = true;
