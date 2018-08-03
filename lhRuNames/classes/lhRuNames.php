@@ -18,14 +18,15 @@ class lhRuNames extends lhAbstractRuNames {
 
     protected function setNames() {
         $names = $this->findName();
+        $this->names = [];
         $this->names['full'] = array_shift($names);
         foreach ($names as $name) {
-            if (preg_match("/^_!(.+)/", $name, $matches)) {
+            if (preg_match("/^_!(.+)/u", $name, $matches)) {
                 $this->names['dim-voc'][] = $matches[1];
-            } elseif (preg_match("/^#!(.+)/", $name, $matches)) {
+            } elseif (preg_match("/^#!(.+)/u", $name, $matches)) {
                 $this->names['unf-voc'][] = $matches[1];
             } else {
-                preg_match("/^([!_#]?)(.+)/", $name, $matches);
+                preg_match("/^([!_#]?)(.+)/u", $name, $matches);
                 switch ($matches[1]) {
                     case '!':
                         $this->names['voc'][] = $matches[2];
@@ -53,17 +54,16 @@ class lhRuNames extends lhAbstractRuNames {
         
         $names_array = [];
         
-        if (preg_match_all("/^((.*)[_#\s]$name(.*))$/um", self::$mens_names, $matches)) {
+        if (preg_match_all("/^((.*)[_#\s]${name}(.*))$/um", self::$mens_names, $matches)) {
             if (count($matches)) $this->gender = self::$gender_male;
             $names_array = array_merge($names_array, $matches[1]);
             $this->known_name = true;
         }
-        if (preg_match_all("/^((.*)[_#\s]$name(.*))$/um", self::$womens_names, $matches)) {
+        if (preg_match_all("/^((.*)[_#\s]${name}\b(.*))$/um", self::$womens_names, $matches)) {
             if (count($matches)) $this->gender = $this->gender ? null : self::$gender_female;
             $names_array = array_merge($names_array, $matches[1]);
             $this->known_name = true;
         }
-        
         if (count($names_array) != 1) {
             $found_names = [];
             foreach ($names_array as $line) {
@@ -73,7 +73,7 @@ class lhRuNames extends lhAbstractRuNames {
             $this->found_names = implode(' ', $found_names);
             throw new Exception("Имя не найдено или найдено больше одного имени");
         }
-        return preg_split("/\s+/", trim($names_array[0]));
+        return preg_split("/\s+/u", trim($names_array[0]));
     }
     
     public function short($name=null) {
@@ -103,6 +103,10 @@ class lhRuNames extends lhAbstractRuNames {
     public function full($name=null) {
         $this->setName($name);
         return $this->names['full'];
+    }
+    
+    public function foundNames() {
+        return $this->found_names;
     }
 
 }

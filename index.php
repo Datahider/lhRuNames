@@ -10,9 +10,14 @@ define('LH_LIB_ROOT', './');
 
 require_once LH_LIB_ROOT . 'lhRuNames/classes/lhRuNames.php';
 
-$n = new lhRuNames('дарья');
+$n = new lhRuNames('Дарья');
 
 echo $n->full()."\n";
+var_dump($n->short());
+var_dump($n->shortVocative());
+var_dump($n->unformalVocative());
+
+echo $n->full("Марга")."\n";
 var_dump($n->short());
 var_dump($n->shortVocative());
 var_dump($n->unformalVocative());

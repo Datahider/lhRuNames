@@ -35,7 +35,9 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
 
     protected function setName($name=null) {
         if (($this->name != $name) && ($name !== null)) {
-            $this->name = mb_strtoupper(mb_substr($name, 0, 1), "UTF-8") . mb_strtolower(mb_substr($name, 1), "UTF-8");
+            $this->name = preg_replace_callback("/^(.)(.*)$/u", function ($matches) {
+                return mb_strtoupper($matches[1], "UTF-8") . mb_strtolower($matches[2], "UTF-8");
+            }, $name);
             $this->setNames();
         }
         return $this->name;
