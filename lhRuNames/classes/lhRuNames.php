@@ -18,6 +18,10 @@ class lhRuNames extends lhAbstractRuNames {
 
     protected function setNames() {
         $names = $this->findName();
+        $this->setNameForms($names);
+    }
+    
+    protected function setNameForms($names) {
         $this->names = [];
         $this->names['full'] = array_shift($names);
         foreach ($names as $name) {
@@ -51,59 +55,86 @@ class lhRuNames extends lhAbstractRuNames {
         $name = $this->name;
         $this->known_name = false;
         $this->gender = null;
-        
-        $names_array = [];
-        
-        if (preg_match_all("/^((.*)[_#\s]${name}\b(.*))$/um", self::$mens_names, $matches)) {
-            if (count($matches)) $this->gender = self::$gender_male;
-            $names_array = array_merge($names_array, $matches[1]);
-            $this->known_name = true;
+        $this->found_names = '';
+
+        $mens_array = $this->getMatching($name, self::$mens_names);
+        $womens_array = $this->getMatching($name, self::$womens_names);
+        $count_m = count($mens_array);
+        $count_w = count($womens_array);
+        if ($count_m && !$count_w) {
+            $this->gender = self::$gender_male;
+            $names_array = $mens_array;
+        } elseif (!$count_m && $count_w) {
+            $this->gender = self::$gender_female;
+            $names_array = $womens_array;
+        } elseif ($count_m && $count_w) {
+            $names_array = array_merge($mens_array, $womens_array);
+        } else {
+            $this->name = null;
+            throw new Exception("Не найдено подходящего имени", 1);
         }
-        if (preg_match_all("/^((.*)[_#\s]${name}\b(.*))$/um", self::$womens_names, $matches)) {
-            if (count($matches)) $this->gender = $this->gender ? null : self::$gender_female;
-            $names_array = array_merge($names_array, $matches[1]);
-            $this->known_name = true;
+
+        $this->known_name = true;
+        $this->setFoundNames($names_array);
+        return preg_split("/\s+/u", trim($names_array[0]));
+    }
+
+    protected function setFoundNames($names_array) {
+        foreach ($names_array as $line) {
+            $found_names[] = preg_replace("/^(\w+).*$/u", "$1", $line);
         }
-        if (count($names_array) != 1) {
-            $found_names = [];
-            foreach ($names_array as $line) {
-                $split = preg_split("/\s+/u", trim($line), 2);
-                $found_names[] = $split[0];
-            }
-            $this->found_names = implode(' ', $found_names);
-            throw new Exception("Имя не найдено или найдено больше одного имени");
+        $this->found_names = implode(' ', $found_names);
+        if (isset($found_names[1])) {
+            $this->name = null;
+            throw new Exception("Найдено больше одного имени", 2);
         }
-        $result = preg_split("/\s+/u", trim($names_array[0]));
-        $this->found_names = $result[0];
-        return $result;
+    }
+    
+    protected function getMatching($name, $names) {
+        $matching = [];
+        if (preg_match_all("/^((.*)[_#\s]${name}\b(.*))$/um", $names, $matches)) {
+            $matching = array_merge($matching, $matches[1]);
+        }
+        $new_matching = [];
+        foreach ($matching as $string) {
+            $new_matching[] = trim($string);
+        }
+        return $new_matching;
     }
     
     public function short($name=null) {
         $this->setName($name);
-        return ($this->names['short']) ? $this->names['short'] : [$this->full()];
+        if (empty($this->name)) {throw new Exception("Имя не установлено", 5);}
+        return (!empty($this->names['short'])) ? $this->names['short'] : [$this->full()];
     }
     public function shortVocative($name=null) {
         $this->setName($name);
-        return ($this->names['voc']) ? $this->names['voc'] : $this->short();
+        if (empty($this->name)) {throw new Exception("Имя не установлено", 5);}
+        return (!empty($this->names['voc'])) ? $this->names['voc'] : $this->short();
     }
     public function dim($name=null) {
         $this->setName($name);
-        return ($this->names['dim']) ? $this->names['dim'] : $this->short();
+        if (empty($this->name)) {throw new Exception("Имя не установлено", 5);}
+        return (!empty($this->names['dim'])) ? $this->names['dim'] : $this->short();
     }
     public function dimVocative($name=null) {
         $this->setName($name);
-        return ($this->names['dim-voc']) ? $this->names['dim-voc'] : $this->dim();
+        if (empty($this->name)) {throw new Exception("Имя не установлено", 5);}
+        return (!empty($this->names['dim-voc'])) ? $this->names['dim-voc'] : $this->dim();
     }
     public function unformal($name=null) {
         $this->setName($name);
+        if (empty($this->name)) {throw new Exception("Имя не установлено", 5);}
         return ($this->names['unf']) ? $this->names['unf'] : [$this->full()];
     }
     public function unformalVocative($name=null) {
         $this->setName($name);
+        if (empty($this->name)) {throw new Exception("Имя не установлено", 5);}
         return ($this->names['unf-voc']) ? $this->names['unf-voc'] : $this->unformal();
     }
     public function full($name=null) {
         $this->setName($name);
+        if (empty($this->name)) {throw new Exception("Имя не установлено", 5);}
         return $this->names['full'];
     }
     
@@ -111,4 +142,29 @@ class lhRuNames extends lhAbstractRuNames {
         return $this->found_names;
     }
 
+    public function setFullName($name) {
+        $this->name = $name;
+        $this->known_name = false;
+        $this->gender = null;
+        $this->found_names = '';
+
+        $total = preg_match("/^\s+(${name}\b.*)$/um", self::$mens_names, $mens) + preg_match("/^\s+(${name}\b.*)$/um", self::$womens_names, $womens);
+        if ($total > 1) {
+            $this->name = null;
+            throw new Exception("Найдено больше одного полного имени", 4);
+        } elseif ($total == 0) {
+            $this->name = $name;
+            $this->setNameForms([$name]);
+            throw new Exception("Полное имя не найдено", 3);
+        } else {
+            if (count($mens)) {
+                $this->gender = self::$gender_male;
+                $this->setNameForms(preg_split("/\s+/u", $mens[1]));
+            } else {
+                $this->gender = self::$gender_female;
+                $this->setNameForms(preg_split("/\s+/u", $womens[1]));
+            }
+            $this->known_name = true;
+        }
+    }
 }

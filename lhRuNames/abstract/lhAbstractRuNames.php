@@ -843,7 +843,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Рената
         Римма
         Рина
-        Рита
+        Рита _!Ритуль _!Ритусь _!Тусь
         Рогнеда
         Роберта
         Роза

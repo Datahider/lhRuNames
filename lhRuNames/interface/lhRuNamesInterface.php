@@ -23,5 +23,7 @@ interface lhRuNamesInterface {
     public function shortVocative($name=null);          // Петь, Коль, Андрей
     public function unformal($name=null);               // Петро, Петрович, Колян, Андрюха
     public function unformalVocative($name=null);       // Андрюх
+
+    public function setFullName($name);                 // Установка переданного имени как полного
     
 }
