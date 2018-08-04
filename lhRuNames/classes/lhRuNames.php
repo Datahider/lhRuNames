@@ -67,7 +67,7 @@ class lhRuNames extends lhAbstractRuNames {
         if (count($names_array) != 1) {
             $found_names = [];
             foreach ($names_array as $line) {
-                $split = preg_split("/\s+/", trim($line), 2);
+                $split = preg_split("/\s+/u", trim($line), 2);
                 $found_names[] = $split[0];
             }
             $this->found_names = implode(' ', $found_names);

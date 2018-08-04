@@ -17,7 +17,7 @@ var_dump($n->short());
 var_dump($n->shortVocative());
 var_dump($n->unformalVocative());
 
-echo $n->full("Вита")."\n";
+echo $n->full("Рита")."\n";
 var_dump($n->short());
 var_dump($n->shortVocative());
 var_dump($n->unformalVocative());
