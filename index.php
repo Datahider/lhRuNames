@@ -13,11 +13,17 @@ require_once LH_LIB_ROOT . 'lhRuNames/classes/lhRuNames.php';
 $n = new lhRuNames('Дарья');
 
 echo $n->full()."\n";
+echo $n->foundNames();
 var_dump($n->short());
 var_dump($n->shortVocative());
 var_dump($n->unformalVocative());
 
-echo $n->full("Рита")."\n";
+try {
+    echo $n->full("Рита")."\n";
+}
+catch (Exception $ex) {
+    echo $n->foundNames();
+}
 var_dump($n->short());
 var_dump($n->shortVocative());
 var_dump($n->unformalVocative());
