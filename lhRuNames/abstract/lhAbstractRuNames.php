@@ -502,7 +502,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Яков
         Ян
         Януарий
-        Ярослав
+        Ярослав Слава !Слав
         Ясон               
     ';
 
