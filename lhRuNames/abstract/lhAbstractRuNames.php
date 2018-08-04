@@ -151,12 +151,12 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Витаутас
         Витольд
         Владимир
-        Владислав
+        Владислав Влад
         Владлен
         Влас
         Володар
         Всеволод
-        Вячеслав
+        Вячеслав Слава !Слав
         Гавриил
         Галактион
         Гамлет
@@ -396,7 +396,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Родион
         Ролан
         Роман
-        Ростислав
+        Ростислав Слава !Слав
         Рубен
         Рудольф
         Руслан
