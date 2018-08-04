@@ -54,7 +54,7 @@ class lhRuNames extends lhAbstractRuNames {
         
         $names_array = [];
         
-        if (preg_match_all("/^((.*)[_#\s]${name}(.*))$/um", self::$mens_names, $matches)) {
+        if (preg_match_all("/^((.*)[_#\s]${name}\b(.*))$/um", self::$mens_names, $matches)) {
             if (count($matches)) $this->gender = self::$gender_male;
             $names_array = array_merge($names_array, $matches[1]);
             $this->known_name = true;
@@ -73,7 +73,9 @@ class lhRuNames extends lhAbstractRuNames {
             $this->found_names = implode(' ', $found_names);
             throw new Exception("Имя не найдено или найдено больше одного имени");
         }
-        return preg_split("/\s+/u", trim($names_array[0]));
+        $result = preg_split("/\s+/u", trim($names_array[0]));
+        $this->found_names = $result[0];
+        return $result;
     }
     
     public function short($name=null) {

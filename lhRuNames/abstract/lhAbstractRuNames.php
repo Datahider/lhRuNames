@@ -71,7 +71,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Акакий
         Аким
         Алан
-        Александр Саша !Саш _!Сашунь #Саня #!Сань #Санёк #Санек
+        Александр Саша !Саш _!Сашунь #Саня #!Сань #Санёк #Санек #Санчо
         Алексей
         Али
         Алихан
@@ -536,7 +536,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Акулина
         Алана
         Алевтина
-        Александра Саша
+        Александра Саша _Сашуня !Саш _!Сашунь
         Алена
         Алико
         Алина
@@ -775,7 +775,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Малика
         Мальвина
         Мара
-        Маргарита
+        Маргарита Рита Марго !Рит _Маргоша _Ритуля _Ритуся _Туся _!Тусь _!Маргош _!Ритусь _!Ритуль _!Туль _!Гош
         Марианна
         Марика
         Марина
@@ -783,7 +783,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Марселина
         Марта
         Маруся
-        Марфа
+        Марфа _Марфуша _!Марфуш
         Марьям
         Матильда
         Мелания
