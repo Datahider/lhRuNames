@@ -135,7 +135,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Вардан
         Варлаам
         Варфоломей
-        Василий Вася
+        Василий Вася !Вась
         Ватслав
         Велизар
         Велор
@@ -594,12 +594,12 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Валерия
         Ванда
         Ванесса
-        Варвара
+        Варвара Варя !Варь !Вареник
         Василина
-        Василиса
+        Василиса Вася !Вась
         Венера
         Вера
-        Вероника
+        Вероника Ника !Ник
         Веселина
         Весна
         Веста
