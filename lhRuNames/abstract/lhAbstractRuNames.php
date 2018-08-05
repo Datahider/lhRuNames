@@ -736,7 +736,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Кора
         Корнелия
         Кристина
-        Ксения
+        Ксения !Ксень _!Ксюш #Ксюха #!Ксюх
         Лада
         Лайма
         Лана
