@@ -726,6 +726,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Карина
         Каролина
         Катарина
+        Катия
         Кира
         Клавдия
         Клара
