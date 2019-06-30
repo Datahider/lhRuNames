@@ -591,7 +591,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Борислава
         Бронислава
         Валентина
-        Валерия
+        Валерия Лера !Лер
         Ванда
         Ванесса
         Варвара Варя !Варь !Вареник
