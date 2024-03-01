@@ -580,6 +580,7 @@ abstract class lhAbstractRuNames implements lhRuNamesInterface {
         Ася !Ась
         Аурелия
         Афанасия
+        Афродита
         Аэлита
         Беатриса
         Белинда
